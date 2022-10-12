@@ -1,0 +1,7 @@
+<div id="content">
+	<h2>I am from Content</h2>
+	
+	<% for(var [key, value] of Object.entries(myBlock.getChildren())){ %>
+			<%- value.toHtml(); %>
+	<% } %>
+</div>

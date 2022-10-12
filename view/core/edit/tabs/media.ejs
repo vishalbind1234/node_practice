@@ -1,0 +1,20 @@
+<div>
+	<div id="top_buttons">
+		<% for(var [key, value] of Object.entries( myBlock.getButtons("top") )){ %>
+			<% if(value.status == true){ %>
+				<button type="button" id="<%= value.name %>" value="<%= value.getUrl() %>" ><%= value.label %></button>
+			<% } %>
+		<% } %>
+	</div>
+
+	<h1>I Am From Media ... </h1>
+	
+	<div id="bottom_buttons">
+		<% for(var [key, value] of Object.entries( myBlock.getButtons("bottom") )){ %>
+			<% if(value.status == true){ %>
+				<button type="button" id="<%= value.name %>" value="<%= value.getUrl() %>" ><%= value.label %></button>
+			<% } %>
+		<% } %>
+	</div>
+</div>
+

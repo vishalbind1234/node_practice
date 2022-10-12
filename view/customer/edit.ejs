@@ -1,0 +1,9 @@
+<div>
+	<form id="customer_edit_form" action="<%= myBlock.getSave() %>" enctype="multipart/form-data" method="post">
+		<div>Employee Name :&nbsp; <input type="text" name="emp_name" /></div>
+		<div>Employee Dept :&nbsp; <input type="text" name="emp_dept" /></div>
+		<div>Employee Docx :&nbsp; <input type="file" name="multiple_files" multiple /></div>
+		<!-- <input type="submit" value="Upload" /> -->
+		<button id="save" type="button" value="<%= myBlock.getSave() %>">Save</button>
+	</form>
+</div>

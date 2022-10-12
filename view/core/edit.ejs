@@ -1,0 +1,53 @@
+<div>
+	<div id="top_buttons">
+		<% for(var [key, value] of Object.entries( myBlock.getButtons("top") )){ %>
+			<% console.log(myBlock.getButtons("top")) %>
+			<% if(value.status == true){ %>
+				<button id ="<%= key %>" type="button" name="<%= value.name %>" value="<%= value.getUrl() %>" ><%= value.label %></button>
+			<% } %>
+		<% } %>
+	</div>
+	<form id="customer_edit_form" action="<%= myBlock.getSaveUrl() %>" enctype="multipart/form-data" method="post">
+		<table>
+			<% for(var [key , value] of Object.entries( myBlock.getFormFields() )){ %>
+				<% if(value.status == true){ %>
+					<tr>
+						<td>
+							<label for="<%= value.name %>"><%= value.label %></label> 
+						</td>
+						<td>
+							<% var cons = ''; %>
+							<% for(var [key2 , value2] of Object.entries( value.constraints )){ %>
+								<% cons += ' ' + key2 + '=' + '"' + value2 + '"' ; %>
+							<% } %>
+
+							<% var attr = ""; %>
+							<% for(var key2 in value.attributes){ %>
+								<% attr += value.attributes[key2] + " " ; %>
+							<% } %>
+
+							<% var str = `<input type="${value.type}" name="${value.name}" 
+																		value="${value.value}" ${cons} ${attr} >`; %>
+							<%- str %>
+
+						</td>
+					</tr>
+				<% } %>
+			<% } %>
+			<tr colspan="2">
+				<td>
+					<button id="save" type="button" value="<%= myBlock.getSaveUrl() %>">Save</button>
+				</td>
+			</tr>
+		</table>
+		
+	</form>
+	<div id="botton_buttons">
+		<% for(var [key, value] of Object.entries( myBlock.getButtons("bottom") )){ %>
+			<% if(value.status == true){ %>
+				<button type="button" name="<%= value.name %>" value="<%= value.getUrl() %>" ><%= value.label %></button>
+			<% } %>
+		<% } %>
+	</div>
+</div>
+

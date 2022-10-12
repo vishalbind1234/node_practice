@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		table tr td {border : 2px solid white;}
+	</style>
+
+	<% 
+		for(var [key , value] of Object.entries(myBlock.getHeader().getChildren()))
+		{
+			myBlock.getHead().addJsFilePath(value.getJsFilePath());
+		}
+		for(var [key , value] of Object.entries(myBlock.getContent().getChildren()))
+		{
+			myBlock.getHead().addJsFilePath(value.getJsFilePath());
+		}
+		for(var [key , value] of Object.entries(myBlock.getFooter().getChildren()))
+		{
+			myBlock.getHead().addJsFilePath(value.getJsFilePath());
+		}
+	%>
+	<%- myBlock.getHead().toHtml(); %>
+</head>
+<body>
+	<table>
+		<tr>
+			<td><%- myBlock.getHeader().toHtml(); %></td>
+		</tr>
+		<tr>
+			<td><%- myBlock.getContent().toHtml(); %></td>
+		</tr>
+		<tr>
+			<td><%- myBlock.getFooter().toHtml(); %></td>
+		</tr>
+	</table>
+	<button id="btn1" type="button"> Test JS </button>
+</body>
+<script type="text/javascript">
+	jQuery("document").ready(function(){
+		jQuery("#btn1").on({
+			click : function(){
+
+				alert("Go back to Work");			
+			}
+		});
+	});
+</script>
+</html>

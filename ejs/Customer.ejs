@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><%= module %></title>
+
+		<%- include("./Header.ejs") %>
+
+	</head>
+	<body>
+		<div id="div1">
+			<h1>This is <b> <%= module %> </b> page</h1>
+			<h1><b> <%= customer_data[0].name %> </b> </h1>
+			<button id="animate" type="button"> click me</button>
+			<button id="btn2" type="button"> ADD MORE </button>
+			<p id="p1">we are working here</p>
+		</div>
+		<div id="div2">
+			<!-- some element will be appended dynamically -->
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		jQuery("document").ready(function(){
+			jQuery("#animate").on({
+				"mouseout" : function(){
+					var name = window.prompt("what is your name");
+					window.alert(`Hello Hello ${name} !!!`);
+				},
+				"click" : function(){
+					var name = window.prompt("what is your name");
+					window.alert(`Hello ${name} !!!`);
+				} 
+			});
+
+			jQuery("#btn2").on({
+				"click" : function(){
+					jQuery.ajax({
+						// dataType : "json",
+						url : "http://localhost:7777/Ajax/Customer/",
+						type : "post",
+						success : function(data)
+						{
+							var arr = JSON.parse(data);		
+							jQuery("#div2").html(`<h1>Newly added Element ${arr[1].name} </h1>`);
+						},
+						error : function(err)
+						{
+							window.alert(`error !!!`);
+							console.log(err);
+						}
+
+					});
+				}
+			});
+
+		});
+
+	</script>
+	
+</html>

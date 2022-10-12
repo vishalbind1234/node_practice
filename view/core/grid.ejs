@@ -1,0 +1,41 @@
+<div>
+	<div id="top_buttons">
+		<% for(var [key, value] of Object.entries( myBlock.getButtons("top") )){ %>
+			<% if(value.status == true){ %>
+				<button type="button" id="<%= value.name %>" value="<%= value.getUrl() %>" ><%= value.label %></button>
+			<% } %>
+		<% } %>
+	</div>
+	<table>
+		<tr>
+			<% for(var [key, value] of Object.entries( myBlock.getHeader() )){ %>
+				<% if(value.status == true){ %>
+					<th><%= value.label %></th>
+				<% } %>
+			<% } %>
+		</tr>
+		<% var collection = myBlock.getCollection(); %>
+		<% for(var row of collection){ %>
+			<tr>
+				<% var obj = row.get(); %>
+				<% for(var key in obj){ %>
+					<td><%- myBlock.prepareData(key , obj) %></td>
+				<% } %>
+
+				<% var action = myBlock.getAction(); %>
+				<% for(var key in action){ %>
+					<td><button class="<%= action[key].name %>" type="button" value="<%= action[key].getUrl(row) %>"> 
+						<%= action[key].label %> </button></td>
+				<% } %>
+			</tr>
+		<% } %>
+	</table>
+	<div id="botton_buttons">
+		<% for(var [key, value] of Object.entries( myBlock.getButtons("bottom") )){ %>
+			<% if(value.status == true){ %>
+				<button type="button" id="<%= value.name %>" value="<%= value.getUrl() %>" ><%= value.label %></button>
+			<% } %>
+		<% } %>
+	</div>
+
+</div>

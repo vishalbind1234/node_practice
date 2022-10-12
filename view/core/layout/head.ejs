@@ -1,0 +1,7 @@
+<script type="text/javascript" src="<%= Ccc.getRegistry('base_url') + 'js/jquery_3_6_1.js' %>" ></script>
+
+<% for(var path of myBlock.getJsFilePaths()){ %>
+	<script type="text/javascript" src="<%= path %>" ></script>
+<% } %>
+
+

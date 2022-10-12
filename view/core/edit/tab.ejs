@@ -1,0 +1,8 @@
+<div id="customer_edit_tab_div" >
+	<% for(var [key , value] of Object.entries( myBlock.getTab() )){ %>
+		<% if(value.status == true){ %>
+			<button id="<%= value.name %>" type="button" value="<%= value.getUrl() %>"><%= value.label %></button>
+		<% } %>
+	<% } %>
+	<%- myBlock.getCurrentTab().toHtml(); %>
+</div>
